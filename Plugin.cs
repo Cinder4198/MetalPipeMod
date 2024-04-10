@@ -42,30 +42,31 @@ public class MetalPipeModBase : BaseUnityPlugin
     string directory = location.TrimEnd(text.ToCharArray());
     string modelFile = directory + "metalpipe";
 
-    mls.LogInfo("Grabbing Asset Bundle...");
+    //mls.LogInfo("Grabbing Asset Bundle...");
     AssetBundle val = AssetBundle.LoadFromFile(modelFile);
-    mls.LogInfo("Asset Bundle Grabbed!");
+    //mls.LogInfo("Asset Bundle Grabbed!");
 
-    mls.LogInfo("Loading metalpipe model...");
+    //mls.LogInfo("Loading metalpipe model...");
     newModel = val.LoadAssetWithSubAssets<Mesh>("metalpipe.obj")[0];
-    mls.LogInfo("Model Loaded!");
+    //mls.LogInfo("Model Loaded!");
 
-    mls.LogInfo("Loading metalpipe material...");
+    //mls.LogInfo("Loading metalpipe material...");
     newMaterial = val.LoadAsset<Material>("Metalpipe.001");
-    mls.LogInfo("Material Loaded!");
+    //mls.LogInfo("Material Loaded!");
 
-    mls.LogInfo("Replacing Sounds...");
+    //mls.LogInfo("Replacing Sounds...");
     AudioClip shovelhit;
-    mls.LogInfo("Getting SOund File...");
-    mls.LogInfo("Directory: " + directory.TrimEnd('\\'));
+    //mls.LogInfo("Getting SOund File...");
+    //mls.LogInfo("Directory: " + directory.TrimEnd('\\'));
     shovelhit = SoundTool.GetAudioClip(directory.TrimEnd('\\'), "sounds", "metalpipehit.mp3");
-    mls.LogInfo("Replacing hit 1...");
+    //mls.LogInfo("Replacing hit 1...");
     SoundTool.ReplaceAudioClip("ShovelHitDefault", shovelhit);
-    mls.LogInfo("Replacing hit 2...");
+    //mls.LogInfo("Replacing hit 2...");
     SoundTool.ReplaceAudioClip("ShovelHitDefault2", shovelhit);
-    mls.LogInfo("Sounds Replaced!");
+    //mls.LogInfo("Sounds Replaced!");
 
     harmony.PatchAll(typeof(ShovelPatch));
+    mls.LogInfo("Metal Pipe Shovel Mod Loaded!");
 
     }
 
